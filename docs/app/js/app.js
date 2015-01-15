@@ -332,7 +332,8 @@ function($rootScope, $scope, component, demos, $http, $templateCache, $q) {
     var files = [demo.index]
       .concat(demo.js || [])
       .concat(demo.css || [])
-      .concat(demo.html || []);
+      .concat(demo.html || [])
+      .concat(demo.md || []);
     files.forEach(function(file) {
       file.httpPromise =$http.get(file.outputPath, {cache: $templateCache})
         .then(function(response) {

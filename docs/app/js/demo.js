@@ -22,7 +22,7 @@ function($mdUtil) {
     self.demoTitle = $interpolate($attrs.demoTitle || '')($scope.$parent);
     self.demoModule = $interpolate($attrs.demoModule || '')($scope.$parent);
     self.files = {
-      css: [], js: [], html: []
+      css: [], js: [], html: [], md: []
     };
 
     self.addFile = function(name, contentsPromise) {
@@ -47,6 +47,8 @@ function($mdUtil) {
         .concat(self.files.js || [])
         .concat(self.files.css || [])
         .concat(self.files.html || []);
+
+      self.demoDescription = self.files.md || [];
     };
 
     function convertName(name) {
@@ -81,4 +83,10 @@ function($mdUtil) {
       element.remove();
     };
   }
+}])
+
+.filter('toHtml', ['$sce', function($sce) {
+  return function(str) {
+    return $sce.trustAsHtml(str);
+  };
 }]);

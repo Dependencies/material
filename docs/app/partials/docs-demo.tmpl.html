@@ -1,6 +1,8 @@
 <div layout="column" layout-fill class="doc-content">
   <div flex layout="column" style="z-index:1">
 
+    <div ng-repeat="markdown in demoCtrl.demoDescription" ng-bind-html="markdown.contents | toHtml"></div>
+
     <div ng-transclude></div>
 
     <section class="demo-container md-whiteframe-z1"
